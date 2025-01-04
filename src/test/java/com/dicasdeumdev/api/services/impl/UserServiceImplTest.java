@@ -93,7 +93,15 @@ class UserServiceImplTest {
     }
 
     @Test
-    void create() {
+    void whenCreateUserThenReturnSuccess() {
+        when(repository.save(any())).thenReturn(user);
+        when(mapper.map(any(User.class), Mockito.eq(UserDTO.class)))
+                .thenReturn(userDTO);
+        User response = service.create(userDTO);
+
+        assertNotNull(response);
+        assertEquals(User.class, response.getClass());
+        assertEquals(ID, response.getId());
     }
 
     @Test
