@@ -2,8 +2,8 @@ package com.dicasdeumdev.api.services.impl;
 
 import com.dicasdeumdev.api.domain.User;
 import com.dicasdeumdev.api.dto.UserDTO;
-import com.dicasdeumdev.api.exceptions.DataIntegratyViolationException;
-import com.dicasdeumdev.api.exceptions.ObjectNotFoundException;
+import com.dicasdeumdev.api.services.exceptions.DataIntegratyViolationException;
+import com.dicasdeumdev.api.services.exceptions.ObjectNotFoundException;
 import com.dicasdeumdev.api.repositories.UserRepository;
 import com.dicasdeumdev.api.services.UserService;
 import org.modelmapper.ModelMapper;

@@ -2,8 +2,8 @@ package com.dicasdeumdev.api.services.impl;
 
 import com.dicasdeumdev.api.domain.User;
 import com.dicasdeumdev.api.dto.UserDTO;
+import com.dicasdeumdev.api.services.exceptions.ObjectNotFoundException;
 import com.dicasdeumdev.api.repositories.UserRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -64,6 +64,19 @@ class UserServiceImplTest {
         assertNotNull(response);
         assertEquals(UserDTO.class, response.getClass());
         assertEquals(ID, response.getId());
+    }
+
+    @Test
+    void whenFindByIdAnObjectNotFoundException() {
+        when(repository.findById(anyInt()))
+                .thenThrow(new ObjectNotFoundException("Objeto não encontrado"));
+
+        try {
+            service.findById(ID);
+        } catch (Exception ex) {
+            assertEquals(ObjectNotFoundException.class, ex.getClass());
+            assertEquals("Objeto não encontrado", ex.getMessage());
+        }
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.dicasdeumdev.api.exceptions;
+package com.dicasdeumdev.api.services.exceptions;
 
 public class DataIntegratyViolationException extends RuntimeException{
 

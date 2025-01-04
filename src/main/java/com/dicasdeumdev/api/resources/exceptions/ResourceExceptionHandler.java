@@ -1,7 +1,7 @@
 package com.dicasdeumdev.api.resources.exceptions;
 
-import com.dicasdeumdev.api.exceptions.DataIntegratyViolationException;
-import com.dicasdeumdev.api.exceptions.ObjectNotFoundException;
+import com.dicasdeumdev.api.services.exceptions.DataIntegratyViolationException;
+import com.dicasdeumdev.api.services.exceptions.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
