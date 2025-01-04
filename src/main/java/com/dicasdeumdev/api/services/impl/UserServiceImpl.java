@@ -62,4 +62,9 @@ public class UserServiceImpl implements UserService {
         }
         return mapper.map(repository.save(mapper.map(dto, User.class)), UserDTO.class);
     }
+
+    @Override
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 }
