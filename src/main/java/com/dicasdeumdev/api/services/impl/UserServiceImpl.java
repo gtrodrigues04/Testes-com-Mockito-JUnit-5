@@ -1,6 +1,7 @@
 package com.dicasdeumdev.api.services.impl;
 
 import com.dicasdeumdev.api.domain.User;
+import com.dicasdeumdev.api.exceptions.ObjectNotFoundException;
 import com.dicasdeumdev.api.repositories.UserRepository;
 import com.dicasdeumdev.api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(Integer id) {
         Optional<User> user = repository.findById(id);
-        return user.orElse(null);
+        return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 }
