@@ -15,3 +15,8 @@ Este projeto dispõe das seguintes tecnologias e práticas:
 ✅ perfis de Teste e Desenvolvimento
 ✅ Validações com Validations
 ✅ Protocolo HTTP no padrão REST
+
+Projeto finalizado com cobertura de testes em todas as classes, todos os métodos em grande porcentagem de linhas:
+
+
+![projeto finalizado 2](https://github.com/user-attachments/assets/eb358130-4392-4f9c-a493-826269a1ad97)
