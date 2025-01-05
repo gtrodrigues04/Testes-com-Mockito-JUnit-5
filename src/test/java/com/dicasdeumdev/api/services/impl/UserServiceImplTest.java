@@ -118,9 +118,16 @@ class UserServiceImplTest {
 
 
     @Test
-    void update() {
-    }
+    void whenUpdateUserThenReturnSuccess() {
+        when(repository.save(any())).thenReturn(user);
+        when(mapper.map(any(User.class), Mockito.eq(UserDTO.class)))
+                .thenReturn(userDTO);
+        UserDTO response = service.update(ID, userDTO);
 
+        assertNotNull(response);
+        assertEquals(UserDTO.class, response.getClass());
+        assertEquals(ID, response.getId());
+    }
     @Test
     void delete() {
     }
