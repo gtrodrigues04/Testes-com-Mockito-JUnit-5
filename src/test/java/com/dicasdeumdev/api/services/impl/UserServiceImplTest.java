@@ -2,6 +2,7 @@ package com.dicasdeumdev.api.services.impl;
 
 import com.dicasdeumdev.api.domain.User;
 import com.dicasdeumdev.api.dto.UserDTO;
+import com.dicasdeumdev.api.services.exceptions.DataIntegratyViolationException;
 import com.dicasdeumdev.api.services.exceptions.ObjectNotFoundException;
 import com.dicasdeumdev.api.repositories.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,8 +19,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -27,7 +27,7 @@ class UserServiceImplTest {
 
     public static final String NAME = "teste";
     public static final int ID = 1;
-    public static final String EMAIL = "teste@gmail.com";
+    public static final String EMAIL = "teste55@gmail.com";
     public static final String PASSWORD = "123";
 
     @InjectMocks
@@ -103,6 +103,19 @@ class UserServiceImplTest {
         assertEquals(User.class, response.getClass());
         assertEquals(ID, response.getId());
     }
+    @Test
+    void whenCreateUserThenAnDataIntegratyViolationExcepetion() {
+        when(repository.findByEmail(anyString())).thenReturn(optionalUser);
+
+        try {
+//           optionalUser.get().setId(2);
+            service.create(userDTO);
+        } catch (Exception ex) {
+            assertEquals(DataIntegratyViolationException.class, ex.getClass());
+            assertEquals("E-mail já cadastrado no sistema", ex.getMessage());
+        }
+    }
+
 
     @Test
     void update() {
