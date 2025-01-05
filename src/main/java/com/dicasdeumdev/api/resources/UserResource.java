@@ -19,7 +19,7 @@ public class UserResource {
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable Integer id) {
 
-        return ResponseEntity.ok(service.findById(id));
+        return ResponseEntity.ok().body(service.findById(id));
     }
 
     @GetMapping
