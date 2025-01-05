@@ -2,7 +2,7 @@ package com.dicasdeumdev.api.services.impl;
 
 import com.dicasdeumdev.api.domain.User;
 import com.dicasdeumdev.api.dto.UserDTO;
-import com.dicasdeumdev.api.services.exceptions.DataIntegratyViolationException;
+import com.dicasdeumdev.api.services.exceptions.DataIntegrityViolationException;
 import com.dicasdeumdev.api.services.exceptions.ObjectNotFoundException;
 import com.dicasdeumdev.api.repositories.UserRepository;
 import com.dicasdeumdev.api.services.UserService;
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = repository.findByEmail(dto.getEmail());
 
         if (user.isPresent()) {
-            throw new DataIntegratyViolationException("E-mail já cadastrado no sistema");
+            throw new DataIntegrityViolationException("E-mail já cadastrado no sistema");
         }
     }
 

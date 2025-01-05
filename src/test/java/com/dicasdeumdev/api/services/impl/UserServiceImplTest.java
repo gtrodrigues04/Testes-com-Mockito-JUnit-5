@@ -2,7 +2,7 @@ package com.dicasdeumdev.api.services.impl;
 
 import com.dicasdeumdev.api.domain.User;
 import com.dicasdeumdev.api.dto.UserDTO;
-import com.dicasdeumdev.api.services.exceptions.DataIntegratyViolationException;
+import com.dicasdeumdev.api.services.exceptions.DataIntegrityViolationException;
 import com.dicasdeumdev.api.services.exceptions.ObjectNotFoundException;
 import com.dicasdeumdev.api.repositories.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -113,7 +113,7 @@ class UserServiceImplTest {
 //           optionalUser.get().setId(2);
             service.create(userDTO);
         } catch (Exception ex) {
-            assertEquals(DataIntegratyViolationException.class, ex.getClass());
+            assertEquals(DataIntegrityViolationException.class, ex.getClass());
             assertEquals(E_MAIL_JA_CADASTRADO_NO_SISTEMA, ex.getMessage());
         }
     }
@@ -139,7 +139,7 @@ class UserServiceImplTest {
             userDTO.setId(2);
             service.update(ID, userDTO);
         } catch (Exception ex) {
-            assertEquals(DataIntegratyViolationException.class, ex.getClass());
+            assertEquals(DataIntegrityViolationException.class, ex.getClass());
             assertEquals(E_MAIL_JA_CADASTRADO_NO_SISTEMA, ex.getMessage());
         }
     }
