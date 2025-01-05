@@ -39,7 +39,6 @@ class ResourceExceptionHandlerTest {
         assertEquals(OBJETO_NAO_ENCONTRADO, response.getBody().getError());
         assertEquals(404, response.getBody().getStatus());
         assertNotEquals("/user/2", response.getBody().getPath());
-        assertNotEquals(LocalDateTime.now(), response.getBody().getTimestamp());
     }
 
     @Test

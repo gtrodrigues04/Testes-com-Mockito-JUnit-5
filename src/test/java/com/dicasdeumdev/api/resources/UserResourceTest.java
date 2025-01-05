@@ -31,6 +31,7 @@ class UserResourceTest {
     public static final int ID = 1;
     public static final String EMAIL = "teste55@gmail.com";
     public static final String PASSWORD = "123";
+    public static final Integer INDEX = 0;
 
     @Mock
     private User user;
@@ -63,6 +64,11 @@ class UserResourceTest {
         assertNotNull(response.getBody());
         assertEquals(ResponseEntity.class, response.getClass());
         assertEquals(UserDTO.class, response.getBody().getClass());
+
+        assertEquals(ID, response.getBody().getId());
+        assertEquals(NAME, response.getBody().getName());
+        assertEquals(EMAIL, response.getBody().getEmail());
+        assertEquals(PASSWORD, response.getBody().getPassword());
     }
 
     @Test
@@ -77,6 +83,11 @@ class UserResourceTest {
         assertEquals(ResponseEntity.class, response.getClass());
         assertEquals(ArrayList.class, response.getBody().getClass());
         assertEquals(UserDTO.class, response.getBody().get(0).getClass());
+
+        assertEquals(ID, response.getBody().get(INDEX).getId());
+        assertEquals(NAME, response.getBody().get(INDEX).getName());
+        assertEquals(EMAIL, response.getBody().get(INDEX).getEmail());
+        assertEquals(PASSWORD, response.getBody().get(INDEX).getPassword());
     }
 
     @Test
@@ -102,6 +113,10 @@ class UserResourceTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(ResponseEntity.class, response.getClass());
         assertEquals(UserDTO.class, response.getBody().getClass());
+
+        assertEquals(ID, response.getBody().getId());
+        assertEquals(NAME, response.getBody().getName());
+        assertEquals(EMAIL, response.getBody().getEmail());
     }
 
     @Test

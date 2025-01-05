@@ -31,6 +31,7 @@ class UserServiceImplTest {
     public static final String PASSWORD = "123";
     public static final String E_MAIL_JA_CADASTRADO_NO_SISTEMA = "E-mail já cadastrado no sistema";
     public static final String OBJETO_NAO_ENCONTRADO = "Objeto não encontrado";
+    public static final Integer INDEX = 0;
 
     @InjectMocks
     private UserServiceImpl service;
@@ -56,7 +57,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    void whenFindByIdThenReturnUserIntance() {
+    void whenFindByIdThenReturnUserInstance() {
         when(repository.findById(anyInt())).thenReturn(optionalUser);
 
         when(mapper.map(any(User.class), Mockito.eq(UserDTO.class)))
@@ -67,6 +68,8 @@ class UserServiceImplTest {
         assertNotNull(response);
         assertEquals(UserDTO.class, response.getClass());
         assertEquals(ID, response.getId());
+        assertEquals(NAME, response.getName());
+        assertEquals(EMAIL, response.getEmail());
     }
 
     @Test
@@ -91,7 +94,11 @@ class UserServiceImplTest {
         assertNotNull(response);
         assertEquals(1, response.size());
         assertEquals(UserDTO.class, response.get(0).getClass());
-        assertEquals(ID, response.get(0).getId());
+
+        assertEquals(ID, response.get(INDEX).getId());
+        assertEquals(NAME, response.get(INDEX).getName());
+        assertEquals(EMAIL, response.get(INDEX).getEmail());
+        assertEquals(PASSWORD, response.get(INDEX).getPassword());
     }
 
     @Test
@@ -103,7 +110,11 @@ class UserServiceImplTest {
 
         assertNotNull(response);
         assertEquals(User.class, response.getClass());
+
         assertEquals(ID, response.getId());
+        assertEquals(NAME, response.getName());
+        assertEquals(EMAIL, response.getEmail());
+        assertEquals(PASSWORD, response.getPassword());
     }
     @Test
     void whenCreateUserThenAnDataIntegratyViolationExcepetion() {
@@ -128,7 +139,11 @@ class UserServiceImplTest {
 
         assertNotNull(response);
         assertEquals(UserDTO.class, response.getClass());
+
         assertEquals(ID, response.getId());
+        assertEquals(NAME, response.getName());
+        assertEquals(EMAIL, response.getEmail());
+        assertEquals(PASSWORD, response.getPassword());
     }
 
     @Test
