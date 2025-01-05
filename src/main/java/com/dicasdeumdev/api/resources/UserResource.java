@@ -1,17 +1,12 @@
 package com.dicasdeumdev.api.resources;
 
-import com.dicasdeumdev.api.domain.User;
 import com.dicasdeumdev.api.dto.UserDTO;
 import com.dicasdeumdev.api.services.UserService;
-import lombok.Getter;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.persistence.GeneratedValue;
-import java.net.URI;
 import java.util.List;
 
 @RestController
